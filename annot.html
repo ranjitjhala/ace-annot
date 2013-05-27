@@ -1,0 +1,52 @@
+<html lang="en" ng-app>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Source Code Annotations: Demo</title>
+    <style>
+      
+      #editor {
+        position: absolute;
+        width: 800px;
+        height: 300px;
+      }
+
+    </style>
+    
+    <script src="extjs/angular/angular.js"></script>
+    <!-- <script src="extjs/bootstrap.js"></script> -->
+
+
+  </head>
+
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar" ng-controller="AnnotDemoCtrl">
+  
+  <div id="annot"> <p>{{annotValue}}</p> </div>
+  
+  <br>
+
+  <div id="editor">
+foo :: Int -> Int
+foo 0 = 1
+foo 1 = 1
+foo n = n * (foo $ n-1)
+
+map :: (a -> b) -> [a] -> [b]
+map f []     = []
+map f (x:xs) = f x : map f xs
+  </div>
+
+  <!-- JavaScript below! ============================================== -->
+  
+  <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="src/theme-chaos.js" type="text/javascript" charset="utf-8"></script>
+  <script src="src/mode-haskell.js" type="text/javascript" charset="utf-8"></script>
+  <script src="extjs/jquery-1.7.1.min.js"></script>
+  <!--<script src="extjs/bootstrap.js"></script> -->
+
+  <script src="annot.js"></script>
+  
+  </body>
+
+</html>
