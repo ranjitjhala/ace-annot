@@ -15,3 +15,12 @@ Tinkering with the ACE editor to support in-place mouseover.
 
    Just see the RAW hackery used for tooltips. DO NOT GET INTO THE REQUIRE.JS morass...
 
+4. HEREHEREHERE
+
+    Fill in the PROPER definition of js/annot.js/annotFun 
+
+    So that it uses the value of some global (sigh) JSON array to generate
+    the contents. [Should be able to use the same format as what
+    liquidhaskell generates? Perhaps some range searching to find the
+    NEAREST identifier...]
+
