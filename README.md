@@ -7,8 +7,11 @@ Tinkering with the ACE editor to support in-place mouseover.
 
 2. Rig it so you can see where mouse is:
 
-    * When user presses Ctrl-t
-    
     * Some text box prints out the ID under the mouse
 
+3. Get a tooltip working. See:
+
+    https://github.com/ajaxorg/ace/blob/master/demo/kitchen-sink/token_tooltip.js#L34
+
+   Just see the RAW hackery used for tooltips. DO NOT GET INTO THE REQUIRE.JS morass...
 
