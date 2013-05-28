@@ -14,13 +14,15 @@
     </style>
     
     <!-- Le styles -->
-    <link href="css/bootstrap-readable.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/bootswatch.css" rel="stylesheet">
- 
-    <script src="extjs/angular/angular.js"></script>
-   <!-- <script src="extjs/bootstrap.js"></script> -->
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+    <!-- <link href="bootstrap/css/bootstrap-readable.css" rel="stylesheet">
+    <link href="bootstrap/css/bootswatch.css" rel="stylesheet">
+    -->
 
+    <script src="extjs/jquery-1.7.1.min.js"></script>
+    <script src="extjs/angular/angular.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
 
   </head>
 
@@ -54,12 +56,13 @@ map f (x:xs) = f x : map f xs
   <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="src/theme-chaos.js" type="text/javascript" charset="utf-8"></script>
   <script src="src/mode-haskell.js" type="text/javascript" charset="utf-8"></script>
-  <script src="extjs/jquery-1.7.1.min.js"></script>
-  
-  <!-- <script src="extjs/bootstrap.js"></script> -->
 
-  <script src="annot.js"></script>
+  <!-- <script src="extjs/jquery-1.7.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.js"></script> -->
   
-  </body>
+  <script src="extjs/require.js" data-main="scripts/annot" type="text/javascript"></script>
+  <!-- <script src="scripts/annot.js"></script> -->
+
+</body>
 
 </html>
