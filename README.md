@@ -15,12 +15,30 @@ Tinkering with the ACE editor to support in-place mouseover.
 
    Just see the RAW hackery used for tooltips. DO NOT GET INTO THE REQUIRE.JS morass...
 
-4. HEREHEREHERE
+4.  Fill in the PROPER definition of js/annot.js/annotFun 
 
-    Fill in the PROPER definition of js/annot.js/annotFun 
+5. Modify Language.Haskell.Liquid.Annotate.annotate to produce: 
 
-    So that it uses the value of some global (sigh) JSON array to generate
-    the contents. [Should be able to use the same format as what
-    liquidhaskell generates? Perhaps some range searching to find the
-    NEAREST identifier...]
+    foo.hs.json
 
+6. Clone 
+    
+    liquid/haskell/demo
+
+    A. Get *liquid.js* working with *ACE*
+    
+    B. Add "View Types" / "Edit Code" buttons
+        - Make editor read-only when "view-types"
+
+    C. Get *liquid.php* to read foo.hs.json and send over:
+    
+        http://stackoverflow.com/questions/8858848/php-read-and-write-json-from-file
+    
+    D. See the JSON file in JS console
+    
+    E. Hook into tooltip.js
+        - Only when "view-types"
+
+
+
+    

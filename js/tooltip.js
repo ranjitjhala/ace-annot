@@ -82,6 +82,14 @@ var TokenTooltip = function(editor, annotFun) {
         // var tokenText = "(" + docPos.row + ", " + docPos.column + ")";
         var tokenText = this.annotFun(docPos.row, docPos.column); 
 
+        // If there is no text, then go home.
+        if (!tokenText) {
+            session.removeMarker(this.marker);
+            tooltipNode.style.display = "none";
+            this.isOpen = false;
+            return;
+        }
+        
         if (this.tokenText != tokenText) {
             tooltipNode.textContent = tokenText;
             this.tooltipWidth = tooltipNode.offsetWidth;
