@@ -13,17 +13,29 @@
 
     </style>
     
+    <!-- Le styles -->
+    <link href="css/bootstrap-readable.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootswatch.css" rel="stylesheet">
+ 
     <script src="extjs/angular/angular.js"></script>
-    <!-- <script src="extjs/bootstrap.js"></script> -->
+   <!-- <script src="extjs/bootstrap.js"></script> -->
 
 
   </head>
 
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" ng-controller="AnnotDemoCtrl">
-  
-  <div id="annot"> <p>{{annotValue}}</p> </div>
-  
+  <!-- <div id="annot"> <p>{{annotValue}}</p> </div> -->
+  Enter name: <input type="text" ng-model="name"><br>
+  Hello <span ng-bind="name"></span>!
+  <pre ng-bind="annotValue"></pre>
+   
+  <div>
+     <span class="label large" id="sourceName">{{annotValue}}</span>
+     <span class="label large" id="sourceName">{{name}}</span>
+   </div> 
+
   <br>
 
   <div id="editor">
@@ -43,7 +55,8 @@ map f (x:xs) = f x : map f xs
   <script src="src/theme-chaos.js" type="text/javascript" charset="utf-8"></script>
   <script src="src/mode-haskell.js" type="text/javascript" charset="utf-8"></script>
   <script src="extjs/jquery-1.7.1.min.js"></script>
-  <!--<script src="extjs/bootstrap.js"></script> -->
+  
+  <!-- <script src="extjs/bootstrap.js"></script> -->
 
   <script src="annot.js"></script>
   
