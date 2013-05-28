@@ -1,23 +1,25 @@
 'use strict';
 
-
-// Define Editor
+//Define Editor
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/chaos");
 var SrcMode = require("ace/mode/haskell").Mode;
 editor.getSession().setMode(new SrcMode());
 
 
-
 function updateAnnotValue($scope, newVal){
   $scope.annotValue = newVal;
 }
 
-// Angular Controller
-function AnnotDemoCtrl($scope, $http, $location){
-  
-  $scope.annotValue = "Zogbert Friggleby";
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+function AnnotDemoCtrl($scope, $http, $location){
+   
+  $scope.annotValue = "Zogbert Friggleby";
+ 
   //editor.on("click", function(ev){
   editor.on("mousemove", function(ev){
     $scope.$apply(function () {
@@ -29,7 +31,5 @@ function AnnotDemoCtrl($scope, $http, $location){
       }
     });
   });
+} 
 
-
-
-}
