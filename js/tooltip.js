@@ -78,9 +78,12 @@ var TokenTooltip = function(editor, annotFun) {
         //     tokenText += "\n  merge";
         // if (token.stateTransitions)
         //     tokenText += "\n  " + token.stateTransitions.join("\n  ");
-       
+        
         // var tokenText = "(" + docPos.row + ", " + docPos.column + ")";
-        var tokenText = this.annotFun(docPos.row, docPos.column); 
+        // var tokenText = this.annotFun(docPos.row, docPos.column); 
+        
+        var tokRange  = session.getAWordRange(docPos.row, docPos.column);
+        var tokenText = this.annotFun(tokRange.start.row, tokRange.start.column);
 
         // If there is no text, then go home.
         if (!tokenText) {
