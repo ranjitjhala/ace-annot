@@ -21,8 +21,8 @@ Tinkering with the ACE editor to support in-place mouseover.
 
     foo.hs.json
 
-6. Clone 
-    
+6. Clone [HEREHEREHEREHEREHERE]
+
     liquid/haskell/demo
 
     A. Get *liquid.js* working with *ACE*
