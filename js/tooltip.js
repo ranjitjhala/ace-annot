@@ -1,5 +1,63 @@
 
+var Range = require("ace/range").Range;
 
+/***********************************************************************/
+/** Language Dependent *************************************************/
+/***********************************************************************/
+
+var splitters = [ ' ', '\t', '\n', '(' , ')', '[', ']' ];
+
+/*@ isSplit :: (char) => boolean */
+function isSplit(c){ 
+  return (splitters.indexOf(c) >= 0); 
+}
+
+/***********************************************************************/
+/** Shuffle the Cursor To Get to WordStart *****************************/
+/***********************************************************************/
+
+function wordRangeLo(s, col){
+  if (isSplit(s[col])){
+    return col;
+  }
+
+  var lo = col;
+  
+  while (0 < lo) {
+    if (isSplit(s[lo - 1])){
+      return lo;
+    };
+    lo = lo - 1;
+  }
+  return lo;
+}
+
+function wordRangeHi(s, col){
+  
+  if (isSplit(s[col])){
+    return col;
+  }
+
+  var hi = col;
+  
+  while (hi < s.length - 1) {
+    if (isSplit(s[hi + 1])) {
+      return hi;
+    }
+    hi = hi + 1;
+  }
+  return hi;
+}
+  
+ 
+/*@ localWordRange :: (string, int, int) => Range */
+function localWordRange(str, row, col){
+  var lo = wordRangeLo(str, col);
+  var hi = wordRangeHi(str, col);
+  var w  = str.slice(lo, 1 + hi);
+  var r  = new Range(row, lo, row, 1 + hi);
+  return r;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////
 // A simple box that follows the mouse around ////////////////////////////////////////
@@ -23,10 +81,10 @@ var TokenTooltip = function(editor, annotFun) {
     editor.container.addEventListener("mousemove", this.onMouseMove, true);
     editor.container.addEventListener("mouseout", this.onMouseOut, true);
 
-    // editor.on("mousemove", this.onMouseMove);
-    // editor.on("mouseout",  this.onMouseOut);
-    // event.addListener(editor.renderer.scroller, "mousemove", this.onMouseMove);
-    // event.addListener(editor.renderer.content, "mouseout", this.onMouseOut);
+    // ORIG editor.on("mousemove", this.onMouseMove);
+    // ORIG editor.on("mouseout",  this.onMouseOut);
+    // ORIG event.addListener(editor.renderer.scroller, "mousemove", this.onMouseMove);
+    // ORIG event.addListener(editor.renderer.content, "mouseout", this.onMouseOut);
 };
 
 (function(){
@@ -73,19 +131,20 @@ var TokenTooltip = function(editor, annotFun) {
             this.isOpen = true;
         }
         
-        // var tokenText = token.type;
-        // if (token.state)
-        //     tokenText += "|" + token.state;
-        // if (token.merge)
-        //     tokenText += "\n  merge";
-        // if (token.stateTransitions)
-        //     tokenText += "\n  " + token.stateTransitions.join("\n  ");
+        // ORIG var tokenText = token.type;
+        // ORIG if (token.state)
+        // ORIG     tokenText += "|" + token.state;
+        // ORIG if (token.merge)
+        // ORIG     tokenText += "\n  merge";
+        // ORIG if (token.stateTransitions)
+        // ORIG     tokenText += "\n  " + token.stateTransitions.join("\n  ");
         
-        // var tokenText = "(" + docPos.row + ", " + docPos.column + ")";
-        // var tokenText = this.annotFun(docPos.row, docPos.column); 
-        
-        var tokRange  = session.getAWordRange(docPos.row, docPos.column);
+        // ORIG var tokenText = "(" + docPos.row + ", " + docPos.column + ")";
+        // ORIG var tokenText = this.annotFun(docPos.row, docPos.column); 
+        // ORIG var tokRange  = session.getAWordRange(docPos.row, docPos.column);
 
+        var line      = session.getLine(docPos.row);
+        var tokRange  = localWordRange(line, docPos.row, docPos.column);  
         var tokenText = this.annotFun(tokRange.start.row, tokRange.start.column);
 
         // If there is no text, then go home.
@@ -106,9 +165,10 @@ var TokenTooltip = function(editor, annotFun) {
         this.updateTooltipPosition(this.x, this.y);
 
         this.token = token;
+        this.range = tokRange;
         session.removeMarker(this.marker);
-        this.range = this.editor.getSelectionRange();
-        // this.range = new Range(docPos.row, token.start, docPos.row, token.start + token.value.length);
+        // ORIG this.range = this.editor.getSelectionRange();
+        // ORIG this.range = new Range(docPos.row, token.start, docPos.row, token.start + token.value.length);
         this.marker = session.addMarker(this.range, "ace_bracket", "text");
     };
     
